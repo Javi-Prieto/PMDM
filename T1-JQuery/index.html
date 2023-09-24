@@ -15,11 +15,28 @@
             <textarea class="form-control " aria-label="With textarea" id="textAre" value=""></textarea>
         </div>
         
-        <button type="button" class="btn btn-primary pt-2 mt-3" id="submBtn">Submit</button>
+        <button type="button" class="btn btn-primary pt-2 mt-3" id="submEncBtn">Códificar</button>
 
     </form>
+    <p >El resultado es: <span id="resultEnc"></span> </p>
+
+    <p class="m-auto m-0 w-100">DESCIFRADO CESAR</p>
+    <form action="" class="m-auto">
+        <div class="input-group">
+            <label for="num">Número de desplazamientos</label>
+            <input type="number" class="input-group" name="num" id="numDes">
+        </div>
+        <div class="input-group pt-2">
+            <span class="input-group-text">Texto</span>
+            <textarea class="form-control " aria-label="With textarea" id="textEncAre" value=""></textarea>
+        </div>
+        
+        <button type="button" class="btn btn-primary pt-2 mt-3" id="submDecBtn">Decodificar</button>
+
+    </form>
+    <p >El resultado es: <span id="resultDec"></span> </p>
     
-    <p >El resultado es: <span id="result"></span> </p>
+    
 
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
