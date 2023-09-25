@@ -18,13 +18,18 @@ $(document).ready( () =>{
                 var j = i;
                 var ind = alphabet.indexOf(j);
                 var newInd = alphabet.indexOf(j) + numDesE;
-                if(ind > alphabet.length){
-                    encT = encT.concat(alphabet[(newInd-alphabet.length)]);
-                        
+                if(ind == -1){
+                    encT = encT.concat(i);
                 }else{
-                    encT = encT.concat(alphabet[newInd]);
-                        
+                    if(ind > alphabet.length){
+                        encT = encT.concat(alphabet[(newInd-alphabet.length)]);
+                            
+                    }else{
+                        encT = encT.concat(alphabet[newInd]);
+                            
+                    }
                 }
+                
                 
             }
         };
@@ -42,13 +47,18 @@ $(document).ready( () =>{
             }else{
                 var s = t;
                 var indD = alphabet.indexOf(s)-numDes;
-                if(indD < 0){
-                    var newInd = indD + 26;
-                    textDec = textDec.concat(alphabet[newInd]);
+                if(alphabet.indexOf(s) == -1){
+                    textDec = textDec.concat(s);
                 }else{
-                    textDec = textDec.concat(alphabet[indD]);
+                    if(indD < 0){
+                        var newIndD = indD + (alphabet.length -1);
+                        textDec = textDec.concat(alphabet[newIndD]);
+                    }else{
+                        textDec = textDec.concat(alphabet[indD]);
+                    }
                 }
-            }
+                }
+                
         }
         $('#resultDec').text(textDec);
     });
