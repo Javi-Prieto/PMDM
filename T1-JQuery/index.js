@@ -7,19 +7,22 @@ $(document).ready( () =>{
         
         var noEncT = $('#textAre').val().toLowerCase();
         var encT = '';
-        
+        var numDesE = $('#numDesEnc').val();
+        numDesE = parseInt(numDesE);
+
         for (var i of noEncT){
             if (i == ' ' || i == 'ñ'){
                 encT = encT.concat(' ')
                 
             }else{
                 var j = i;
-                var ind = alphabet.indexOf(j)+3;
+                var ind = alphabet.indexOf(j);
+                var newInd = alphabet.indexOf(j) + numDesE;
                 if(ind > alphabet.length){
-                    encT = encT.concat(alphabet[(ind-alphabet.length)]);
+                    encT = encT.concat(alphabet[(newInd-alphabet.length)]);
                         
                 }else{
-                    encT = encT.concat(alphabet[ind]);
+                    encT = encT.concat(alphabet[newInd]);
                         
                 }
                 
