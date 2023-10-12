@@ -1,0 +1,29 @@
+#resCard{
+    width: 500px;
+    height: 400px;
+    background-image: url(../../assets/mexicanrestaurant-1024x683.jpg);
+    
+}
+#carBg{
+    background-image: linear-gradient(white, rgba(255, 255, 255, 0.795) 50%,rgba(255, 255, 255, 0));
+}
+
+.restaurantButtons{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.restaurantButtons:hover{
+    background-color: blue !important;
+    color: white !important;
+}
+
+#addressBtn{
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+}
+#addressBtn:hover{
+    background-color: blue !important;
+    color: white !important;
+}
