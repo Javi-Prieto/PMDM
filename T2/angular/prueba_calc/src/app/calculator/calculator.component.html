@@ -1,25 +1,25 @@
-<div id="calc" class=" m-auto bg-light">
-    <div id="result">
-        <p class="text-end">
+<div id="calc" class=" m-auto bg-light mt-5">
+    <div id="result" class="border border-3 border-black">
+        <p class="text-end w-100 p-2">
             {{screen}}
         </p>
     </div>
-    <div class="row" id="btns">
-        <button class="col-3 text-center" (click)="getNumber(9)">9</button>
-        <button class="col-3 text-center" (click)="getNumber(8)">8</button>
-        <button class="col-3 text-center" (click)="getNumber(7)">7</button>
-        <button class="col-3 text-center">*</button>
-        <button class="col-3 text-center" (click)="getNumber(6)">6</button>
-        <button class="col-3 text-center" (click)="getNumber(5)">5</button>
-        <button class="col-3 text-center" (click)="getNumber(4)">4</button>
-        <button class="col-3 text-center">/</button>
-        <button class="col-3 text-center" (click)="getNumber(3)">3</button>
-        <button class="col-3 text-center" (click)="getNumber(2)">2</button>
-        <button class="col-3 text-center"(click)="getNumber(1)">1</button>
-        <button class="col-3 text-center">+</button>
-        <button class="col-3 text-center">C</button>
-        <button class="col-3 text-center" (click)="getNumber(0)">0</button>
-        <button class="col-3 text-center">.</button>
-        <button class="col-3 text-center">=</button>
+    <div class="row w-100 m-auto" id="btns">
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(9)">9</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(8)">8</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(7)">7</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="deleteAll()">CE</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(6)">6</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(5)">5</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(4)">4</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getOperator('-')">-</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(3)">3</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(2)">2</button>
+        <button class="col-3 text-center btn btn-secondary"(click)="getNumber(1)">1</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getOperator('+')">+</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="deleteOne()">C</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getNumber(0)">0</button>
+        <button class="col-3 text-center btn btn-secondary">.</button>
+        <button class="col-3 text-center btn btn-secondary" (click)="getResult()">=</button>
     </div>
 </div>
