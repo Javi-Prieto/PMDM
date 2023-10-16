@@ -1,22 +1,24 @@
 <div id="calc" class=" m-auto bg-light">
     <div id="result">
-
+        <p class="text-end">
+            {{screen}}
+        </p>
     </div>
     <div class="row" id="btns">
-        <button class="col-3 text-center" >9</button>
-        <button class="col-3 text-center">8</button>
-        <button class="col-3 text-center">7</button>
+        <button class="col-3 text-center" (click)="getNumber(9)">9</button>
+        <button class="col-3 text-center" (click)="getNumber(8)">8</button>
+        <button class="col-3 text-center" (click)="getNumber(7)">7</button>
         <button class="col-3 text-center">*</button>
-        <button class="col-3 text-center">6</button>
-        <button class="col-3 text-center">5</button>
-        <button class="col-3 text-center">4</button>
+        <button class="col-3 text-center" (click)="getNumber(6)">6</button>
+        <button class="col-3 text-center" (click)="getNumber(5)">5</button>
+        <button class="col-3 text-center" (click)="getNumber(4)">4</button>
         <button class="col-3 text-center">/</button>
-        <button class="col-3 text-center">3</button>
-        <button class="col-3 text-center">2</button>
-        <button class="col-3 text-center">1</button>
+        <button class="col-3 text-center" (click)="getNumber(3)">3</button>
+        <button class="col-3 text-center" (click)="getNumber(2)">2</button>
+        <button class="col-3 text-center"(click)="getNumber(1)">1</button>
         <button class="col-3 text-center">+</button>
         <button class="col-3 text-center">C</button>
-        <button class="col-3 text-center">0</button>
+        <button class="col-3 text-center" (click)="getNumber(0)">0</button>
         <button class="col-3 text-center">.</button>
         <button class="col-3 text-center">=</button>
     </div>
