@@ -39,6 +39,8 @@ export class CalculatorComponent {
   getResult(){
     let op1:number = +this.n1;
     let op2:number = +this.n2;
+    this.n1 = "";
+    this.n2 = "";
     let result:number;
     this.operator == "+"? result = op1 + op2 : result = op1 - op2;
     this.screen = result.toString();
