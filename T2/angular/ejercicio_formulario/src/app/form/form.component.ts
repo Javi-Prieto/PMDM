@@ -29,14 +29,14 @@ export class FormComponent {
     )
   }
   tryData(){
-    if(this.name =="" &&
-    this.apellidos =="" &&
-    this.NIF =="" &&
-    this.confC =="" &&
-    this.contr =="" &&
-    this.email =="" &&
-    this.sex =="" &&
-    this.desc =="" &&
+    if(this.name =="" ||
+    this.apellidos =="" ||
+    this.NIF =="" ||
+    this.confC =="" ||
+    this.contr =="" ||
+    this.email =="" ||
+    this.sex =="" ||
+    this.desc =="" ||
     this.telf =="" ){
       console.log("Datos Incorrectos")
     }else{
