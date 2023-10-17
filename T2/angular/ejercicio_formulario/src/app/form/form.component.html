@@ -1,0 +1,37 @@
+<form action="" class=" m-auto text-dark bg-secondary mt-5 rounded-2">
+    <div class="row w-75 m-auto justify-content-between ">
+        <label for="nameU" class="col-5 p-0 form-label">Nombre</label>
+        <label for="apeU" class="col-5 p-0">Apellidos</label>
+        <input type="text" name="nameU" id="nameU" class="col-5 rounded-2" [(ngModel)]="name">
+        <input type="text" name="apeU" id="apeU" class="col-5 rounded-2" [(ngModel)]="apellidos">
+        
+        <label for="NIF" class="col-5 p-0">NIF</label>
+        <label for="telf" class="col-5 p-0">Telefono</label>
+        <input type="text" name="NIF" id="NIF" class="col-5 rounded-2" [(ngModel)]="NIF">
+        <input type="text" name="telf" id="telf" class="col-5 rounded-2" [(ngModel)]="telf">
+        
+        <label for="email" class="col-12 p-0">Email</label>
+        <input type="text" name="email" id="email" class="col-12 rounded-2" [(ngModel)]="email">
+
+        <label for="sex" class="col-5 p-0 ">Sexo</label>
+        <label for="desc" class="col-5 p-0">¿Cómo nos has descubierto?</label>
+        <select name="sex" id="sex" class="col-5" [(ngModel)]="sex">
+            <option value="M" >Masculino</option>
+            <option value="F" >Femenino</option>
+        </select>
+        <select name="desc" id="desc" class="col-5" [(ngModel)]="desc">
+            <option value="G" >Buscando Por Google</option>
+            <option value="A" >Por un amigo</option>
+            <option value="P" >Por mi profesor</option>
+        </select>
+        
+        <label for="pass" class="col-5 p-0">Contraseña</label>
+        <label for="confirmP" class="col-5 p-0">Confirmar Contraseña</label>
+        <input type="password" name="pass" id="pass" class="col-5 rounded-2" [(ngModel)]="contr">
+        <input type="password" name="confirmP" id="confirmP" class="col-5 rounded-2" [(ngModel)]="confC">
+
+        <button class="btn btn-primary col-12 mt-2" type="submit" (click)="tryData()">Submit</button>
+    </div>
+    
+
+</form>
