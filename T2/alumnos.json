@@ -12,6 +12,10 @@
 				{
 					"nombre": "Diseno Interfaces",
 					"horas": 190
+				},
+				{
+					"nombre": "Acceso a Datos",
+					"horas": 190
 				}
 			]
 		},
@@ -36,7 +40,7 @@
 			"sexo": "hombre",
 			"modulos": [
 				{
-					"nombre": "Programaci�n Multimedia y Dispositivos M�viles",
+					"nombre": "Programacion Multimedia y Dispositivos Moviles",
 					"horas": 190
 				}
 			]
