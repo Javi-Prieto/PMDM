@@ -1,0 +1,46 @@
+{
+"count": 3,
+"results":
+	[
+		{
+			"nombre": "Javier",
+			"apellidos": "Prieto Ortiz",
+			"id_alumno": 1,
+			"edad": 18,
+			"sexo": "hombre",
+			"modulos": [
+				{
+					"nombre": "Diseno Interfaces",
+					"horas": 190
+				}
+			]
+		},
+		{
+			"nombre": "Alejandro",
+			"apellidos": "Jimenez",
+			"id_alumno": 2,
+			"edad": 19,
+			"sexo": "hombre",
+			"modulos": [
+				{
+					"nombre": "Acceso a Datos",
+					"horas": 190
+				}
+			]
+		},
+		{
+			"nombre": "Manuel",
+			"apellidos": "Molina",
+			"id_alumno": 3,
+			"edad": 20,
+			"sexo": "hombre",
+			"modulos": [
+				{
+					"nombre": "Programaci�n Multimedia y Dispositivos M�viles",
+					"horas": 190
+				}
+			]
+		}
+
+	]
+}
