@@ -9,8 +9,16 @@ const ALUMNOS:Alumnos[] = [
     "sexo": "hombre",
     "modulos": [
       {
-        "nombre": "Dise�o Interfaces",
+        "nombre": "Diseno Interfaces",
         "horas": 190
+      },
+      {
+        "nombre": "Acceso a Datos",
+        "horas": 260
+      },
+      {
+        "nombre": "Programacion Multimedia y Dispositivos Moviles",
+        "horas": 200
       }
     ]
   },
@@ -23,7 +31,7 @@ const ALUMNOS:Alumnos[] = [
     "modulos": [
       {
         "nombre": "Acceso a Datos",
-        "horas": 190
+        "horas": 260
       }
     ]
   },
@@ -35,8 +43,25 @@ const ALUMNOS:Alumnos[] = [
     "sexo": "hombre",
     "modulos": [
       {
-        "nombre": "Programaci�n Multimedia y Dispositivos M�viles",
-        "horas": 190
+        "nombre": "Programacion Multimedia y Dispositivos Moviles",
+        "horas": 200
+      },
+      {
+        "nombre": "Acceso a Datos",
+        "horas": 260
+      }
+    ]
+  },
+  {
+    "nombre": "Loli",
+    "apellidos": "Gutierrez Martinez",
+    "id_alumno": 4,
+    "edad": 26,
+    "sexo": "mujer",
+    "modulos": [
+      {
+        "nombre": "Programacion Multimedia y Dispositivos Moviles",
+        "horas": 200
       }
     ]
   }
@@ -48,5 +73,21 @@ const ALUMNOS:Alumnos[] = [
   styleUrls: ['./alumnos.component.css']
 })
 export class AlumnosComponent {
+
   alumnoList = ALUMNOS;
+  horasTotales = 650;
+  horasTotalesAlumno = 0;
+  setHorasAlumno(horas:number):number{
+    this.horasTotalesAlumno += horas
+    return this.horasTotalesAlumno;
+  }
+  checkHoras():boolean{
+    console.log(this.horasTotalesAlumno)
+    if(this.horasTotalesAlumno >= this.horasTotales){
+      this.horasTotalesAlumno = 0;
+      return true;
+    }
+      this.horasTotalesAlumno = 0;
+    return false;
+  }
 }
