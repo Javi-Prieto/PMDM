@@ -7,6 +7,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportModule } from './material-import/material-import.module';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        FormsModule,
         CommonModule,
         NgbModule,
         BrowserAnimationsModule,
