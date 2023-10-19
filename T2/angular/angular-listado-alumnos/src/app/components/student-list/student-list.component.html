@@ -67,14 +67,14 @@
   <ng-container matColumnDef="subjects">
     <th mat-header-cell *matHeaderCellDef> Subjects </th>
     <td mat-cell *matCellDef="let element" >
-      <span *ngFor="let subject of element">{{subject.name}}</span> 
+      <span *ngFor="let subject of element.subjects">{{subject.name}}</span> 
     </td>
   </ng-container>
 
   <ng-container matColumnDef="paid">
-    <th mat-header-cell *matHeaderCellDef> Paid </th>
+    <th mat-header-cell *matHeaderCellDef> Subjects </th>
     <td mat-cell *matCellDef="let element" >
-      <span >{{getPaidString(element)}}</span> 
+      <span >{{element.getPaidString(element.paid)}}</span> 
     </td>
   </ng-container>
 
