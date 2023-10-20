@@ -78,17 +78,22 @@ export class StudentListComponent {
   
   columns = ['id', 'name', 'age', 'sex', 'subjects', 'percent' , 'paid'];
 
-  changeColumns(name:string){
-    var columnsCopy = ['id', 'name', 'age', 'sex', 'subjects', 'percent' , 'paid'];
-    var index = columnsCopy.indexOf(name);
-    var toChange = this.columns[this.columns.indexOf(name)];
-    
-   if(toChange == null){
-    this.columns.splice(index, 0,name);
-    debugger;
-   }else{
-    this.columns.splice(index, 1);
-   }
+  changeColumns(){
+    this.displayedColumns =[];
+    if(this.checkId)
+      this.displayedColumns.push('id')
+    if(this.checkName)
+      this.displayedColumns.push('name')
+    if(this.checkAge)
+      this.displayedColumns.push('age')
+    if(this.checkSex)
+      this.displayedColumns.push('sex')
+    if(this.checkSub)
+      this.displayedColumns.push('subject')
+    if(this.checkPer)
+      this.displayedColumns.push('percent')
+    if(this.checkPaid)
+      this.displayedColumns.push('paid')
   }
   setAllCheckBox():boolean{
     return true;
