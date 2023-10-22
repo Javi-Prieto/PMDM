@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 import { Sex, Student } from 'src/app/models/alumno.interface';
-import {MatRadioModule} from '@angular/material/radio';
-import {FormsModule} from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
-import { Subject } from 'rxjs';
+
+
 
 const TOTAL_HOURS = 50;
 const STUDENTS: Student[] = [
@@ -50,14 +46,20 @@ const STUDENTS: Student[] = [
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css'],
-  standalone: true,
-  imports: [MatTableModule, MatCardModule, MatCheckboxModule, FormsModule, MatRadioModule],
+  styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent {
-  
-
+  displayedColumns: string[] = ['id', 'name', 'age', 'sex', 'subjects', 'percent' , 'paid'];
   studentList = STUDENTS;
+  
+  checkId: boolean = true;
+  checkName: boolean = true;
+  checkAge: boolean = true;
+  checkSex: boolean = true;
+  checkPer: boolean = true;
+  checkPaid: boolean= true;
+  
+  
 
   getPaidString(student: Student) {
     return student.paid ? 'Yes' : 'No';
@@ -76,39 +78,30 @@ export class StudentListComponent {
     return percent;
   }
   
-  columns = ['id', 'name', 'age', 'sex', 'subjects', 'percent' , 'paid'];
+  
 
   changeColumns(){
     this.displayedColumns =[];
-    if(this.checkId)
-      this.displayedColumns.push('id')
-    if(this.checkName)
-      this.displayedColumns.push('name')
-    if(this.checkAge)
-      this.displayedColumns.push('age')
-    if(this.checkSex)
-      this.displayedColumns.push('sex')
-    if(this.checkSub)
-      this.displayedColumns.push('subject')
-    if(this.checkPer)
-      this.displayedColumns.push('percent')
-    if(this.checkPaid)
-      this.displayedColumns.push('paid')
+    debugger;
+    if(this.checkId){
+      this.displayedColumns.push('id');
+    }
+    if(this.checkName){
+      this.displayedColumns.push('name');
+    }
+    if(this.checkAge){
+      this.displayedColumns.push('age');
+    }
+    if(this.checkSex){
+      this.displayedColumns.push('sex');
+    }
+    if(this.checkPer){
+      this.displayedColumns.push('percent');
+    }
+    if(this.checkPaid){
+      this.displayedColumns.push('paid');
+    }
   }
-  setAllCheckBox():boolean{
-    return true;
-  }
-  checkId = true;
-  checkName = true;
-  checkAge = true;
-  checkSex = true;
-  checkSub = true;
-  checkPer = true;
-  checkPaid= true;
-  indeterminate = false;
-  labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
-  displayedColumns: string[] = this.columns;
-  dataSource =  STUDENTS;
+  
 
 }
