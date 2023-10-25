@@ -18,12 +18,16 @@ export class AgentListComponent implements OnInit{
     
   }
 
-  open(agentUuid: any, modal: any){
-    this.agentService.getAgentByUUID(agentUuid).subscribe(agent => this.selectedAgent = agent);
-
-    this.modalService.open(modal, {
-      animation: true
-    })
+  open(agentUuid: String, modal: any){
+    this.agentService.getAgentByUUID(agentUuid).subscribe(agent => {
+      this.selectedAgent = agent
+      console.log(agentUuid)
+      console.log(this.selectedAgent);
+      this.modalService.open(modal, {
+        animation: true
+      }) 
+    });
+    
   }
 
 }
