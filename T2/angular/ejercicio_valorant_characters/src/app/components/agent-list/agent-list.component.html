@@ -5,12 +5,12 @@
 </div>
 <ng-template #agentDetails let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">{{selectedAgent.displayName}}</h4>
+		<h4 class="modal-title" id="modal-basic-title">{{selectedAgent?.displayName}}</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
 		<ul class="list-group">
-            <li class="list-group-item">{{selectedAgent}}</li>
+            <li class="list-group-item">{{selectedAgent?.developerName}}</li>
             <li class="list-group-item">A second item</li>
             <li class="list-group-item">A third item</li>
             <li class="list-group-item">A fourth item</li>
