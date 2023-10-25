@@ -1,3 +1,23 @@
+<h1 class="h1 text-white text-center font-monospace pt-1">VALORANT AGENTS</h1>
+
 <div class="row">
-    <app-agent-item class="col-3" *ngFor="let agent of agentList" [agent]="agent"></app-agent-item>
+    <app-agent-item class="col-3" *ngFor="let agent of agentList" [agent]="agent" (clickOnAgent)="open($event, agentDetails)"></app-agent-item>
 </div>
+<ng-template #agentDetails let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">{{selectedAgent.displayName}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<ul class="list-group">
+            <li class="list-group-item">{{selectedAgent.abilities}}</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+	</div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Agent } from 'src/app/models/agentList.interface';
 
 @Component({
@@ -8,13 +8,25 @@ import { Agent } from 'src/app/models/agentList.interface';
 })
 export class AgentItemComponent {
   @Input() agent!: Agent;
+  @Output() clickOnAgent = new  EventEmitter<String>();
+
+  
+  clickOnDetails(){
+    return this.clickOnAgent.emit(this.agent.uuid);
+  }
 
   setButtonColor():string{
     switch(this.agent.role?.displayName){
       case 'Sentinel':
-        return 'btn-outline-danger';
-      default:
+        return 'btn-outline-success';
+      case 'Controller':
         return 'btn-outline-primary';
+      case 'Duelist':
+        return 'btn-outline-danger';
+      case 'Initiator':
+        return 'btn-outline-warning';
+      default:
+        return 'btn-outline-secondary';
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agent } from 'src/app/models/agentList.interface';
 import { AgentService } from 'src/app/services/agent.service';
 
@@ -9,11 +10,20 @@ import { AgentService } from 'src/app/services/agent.service';
 })
 export class AgentListComponent implements OnInit{
   agentList :Agent[] = [];
+  selectedAgent!: Agent;
 
-  constructor(private agentService: AgentService){}
+  constructor(private agentService: AgentService, private modalService: NgbModal){}
   ngOnInit(): void {
     this.agentService.getListAgents().subscribe(answ => this.agentList = answ.data);
+    
   }
 
+  open(agentUuid: any, modal: any){
+    this.agentService.getAgentByUUID(agentUuid).subscribe(agent => this.selectedAgent = agent);
+
+    this.modalService.open(modal, {
+      animation: true
+    })
+  }
 
 }

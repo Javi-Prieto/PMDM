@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">{{agent.displayName}}</h5>
           <p class="card-text">{{agent.description}}</p>
-          <button class="btn btn-outline-warning">Agent Details</button>
+          <button class="btn {{setButtonColor()}}" (click)="clickOnDetails()">Agent Details</button>
         </div>
       </div>
     </div>
