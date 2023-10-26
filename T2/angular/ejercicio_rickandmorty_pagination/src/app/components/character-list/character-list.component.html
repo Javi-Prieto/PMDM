@@ -1,0 +1,14 @@
+<nav class="d-flex justify-content-center">
+    <ngb-pagination 
+    [collectionSize]="characterList.info.count" 
+    [pageSize]="20" 
+    [maxSize]="3" 
+    [rotate]="true" 
+    [(page)]="actualPage" 
+    (pageChange)="loadNewPage()" class="align-self-centers" aria-label="Default pagination"></ngb-pagination>
+</nav>
+
+<div class="row justify-content-around">
+    <app-character-item class="col-3 pt-2" *ngFor="let character of characterList.results" [character]="character" ></app-character-item>
+</div>
+
