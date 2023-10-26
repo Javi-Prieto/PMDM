@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Agent, AgentListResponse } from '../models/agentList.interface';
+import { AgentListResponse } from '../models/agent-list.interface';
 import { Observable } from 'rxjs';
+import { AgentDetailsResponses } from '../models/agent-details.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AgentService {
   getListAgents():Observable<AgentListResponse>{
     return this.http.get<AgentListResponse>('https://valorant-api.com/v1/agents');
   }
-  getAgentByUUID(uuid:String):Observable<Agent>{
-    return this.http.get<Agent>('https://valorant-api.com/v1/agents/'+ uuid);
+  getAgentByUUID(uuid:String):Observable<AgentDetailsResponses>{
+    return this.http.get<AgentDetailsResponses>(`https://valorant-api.com/v1/agents/${uuid}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Agent } from 'src/app/models/agentList.interface';
+import { Agent } from 'src/app/models/agent-list.interface';
 
 @Component({
   selector: 'app-agent-item',
@@ -8,7 +8,7 @@ import { Agent } from 'src/app/models/agentList.interface';
 })
 export class AgentItemComponent {
   @Input() agent!: Agent;
-  @Output() clickOnAgent = new  EventEmitter<String>();
+  @Output() clickOnAgent = new  EventEmitter<string>();
 
   
   clickOnDetails(){

@@ -9,13 +9,10 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
+		<h5 class="h5">Abilities</h5>
 		<ul class="list-group">
-            <li class="list-group-item">{{selectedAgent?.developerName}}</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-          </ul>
+            <li class="list-group-item" *ngFor="let abilitie of selectedAgent?.abilities">{{abilitie.displayName}}: {{abilitie.description}}</li>
+        </ul>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>

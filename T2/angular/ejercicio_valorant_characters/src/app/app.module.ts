@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AgentListComponent } from './components/agent-list/agent-list.component';
 import { AgentItemComponent } from './components/agent-item/agent-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
