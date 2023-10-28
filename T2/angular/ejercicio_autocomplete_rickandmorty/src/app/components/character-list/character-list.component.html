@@ -1,18 +1,19 @@
 <div class="center">
     <form class="example-form">
         <mat-form-field class="example-full-width">
-          <mat-label>Assignee</mat-label>
+          <mat-label>Character Name</mat-label>
           <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="changeCard(option)">
               {{option.name}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-      </form>
-      
+      </form>    
       
 </div>
 <div class="row">
-    <app-character-item class="col-2" *ngFor="let character of onSubmit()" [character]="character"></app-character-item>
+    <app-character-item class="col-2 " *ngFor="let character of filteredOptions |async" [character]="character"></app-character-item>
 </div>
+
+

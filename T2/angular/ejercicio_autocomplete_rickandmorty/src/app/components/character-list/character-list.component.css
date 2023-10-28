@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    width: 100%;
 }
 .col-2{
     margin-top: 20px;
@@ -9,4 +10,10 @@
 .center{
     display: flex;
     justify-content: center;
+}
+.d-none{
+    display: none;
+}
+.d-visible{
+    display: visible !important;
 }

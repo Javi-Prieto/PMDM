@@ -7,5 +7,5 @@ import { Character } from 'src/models/character-list.interface';
   styleUrls: ['./character-item.component.css']
 })
 export class CharacterItemComponent {
-  @Input() character !: Character;
+  @Input() character !: Character ;
 }

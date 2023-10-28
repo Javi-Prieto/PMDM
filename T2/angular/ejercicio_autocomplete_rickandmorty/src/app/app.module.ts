@@ -12,12 +12,14 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe, NgFor } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterListComponent,
-    CharacterItemComponent
+    CharacterItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     NgFor,
     AsyncPipe,
+    MatGridListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
