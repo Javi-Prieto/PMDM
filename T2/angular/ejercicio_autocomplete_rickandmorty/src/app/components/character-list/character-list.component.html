@@ -1,19 +1,48 @@
-<div class="center">
-    <form class="example-form">
+<div class="justify-content-center d-flex" >
+    <form class="example-form" *ngIf=" !selectedCharacter">
         <mat-form-field class="example-full-width">
           <mat-label>Character Name</mat-label>
           <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="changeCard(option)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (onSelectionChange)="changeCard(option)">
               {{option.name}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-      </form>    
+      </form>
+      <div *ngIf="selectedCharacter" class="fw-bold display-2 d-flex flex-column justify-content-center m-auto">
+        BACK TO THE FULL LIST 
+        <button mat-fab color="warn" aria-label="Example icon button with a home icon" class="mb-4 m-auto"  (click)="backToTheList()">
+          <mat-icon>home</mat-icon> 
+        </button>
+      </div>
       
 </div>
-<div class="row">
-    <app-character-item class="col-2 " *ngFor="let character of filteredOptions |async" [character]="character"></app-character-item>
+<div class="row" *ngIf=" !selectedCharacter">
+    <app-character-item class="col-2 mt-3" *ngFor="let character of filteredOptions |async" [character]="character" (click)="changeCard(character)"></app-character-item>
 </div>
+<div class="d-flex justify-content-center align-middle">
+  <div class="card mb-3 " style="max-width: 540px;" id="selectedCard" *ngIf="selectedCharacter">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="selectedCharacter.image" class=" rounded-start w-100" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title h3 text-bold">{{selectedCharacter.name}}</h5>
+          <ul class="list-group">
+            <li class="list-group-item">Created at: {{selectedCharacter.created}}</li>
+            <li class="list-group-item">Gender: {{selectedCharacter.gender}}</li>
+            <li class="list-group-item">Status: {{selectedCharacter.status}}</li>
+            <li class="list-group-item">Last location: {{selectedCharacter.location.name}}</li>
+            <li class="list-group-item">Origin location: {{selectedCharacter.origin.name}}</li>
+            <li class="list-group-item">Type: {{selectedCharacter.type}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 

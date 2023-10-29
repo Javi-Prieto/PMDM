@@ -16,7 +16,7 @@ export class CharacterListComponent implements OnInit{
   characterInfo !: Info;
   myControl = new FormControl<string | Character>('');
   filteredOptions !: Observable<Character[]>;
-  selectedCharacter !: CharacterDetailsResponses;
+  selectedCharacter : CharacterDetailsResponses | any;
 
   constructor(private characterService: CharacterService, ){}
   
@@ -38,13 +38,14 @@ export class CharacterListComponent implements OnInit{
   }
 
   changeCard(character: Character){
-    this.characterService.getCharacter(character.url).subscribe(character => {
-      this.selectedCharacter=character;
-      const selectedElement = document.querySelector('app-character-detail');
-      
-      selectedElement?.classList.add('d-visible')    
-    });
-  }
+      this.characterService.getCharacter(character.url).subscribe(character => {
+        this.selectedCharacter = character;
+      });
+}
+
+backToTheList(){
+  this.selectedCharacter = null;
+}
   
 
   private _filter(name: string): Character[]{
