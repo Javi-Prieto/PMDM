@@ -1,0 +1,4 @@
+<h1 class="h1 text-center fw-bold mt-2">TOP RATED LIST</h1>
+<div class="d-flex overflow-x-scroll w-75 m-auto" >
+    <app-movie-item *ngFor="let movie of movieList" [movie]="movie" class="m-1" (toEmit)="clickOnTopRated($event)"></app-movie-item>
+</div>

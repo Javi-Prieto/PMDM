@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <app-movie-popular-list class="mb-4" (toEmit)="open($event, filmModal)"></app-movie-popular-list>
+    <app-movie-top-rated-list class="mt-2" (toEmit)="open($event,filmModal)"></app-movie-top-rated-list>
+</div>
+<ng-template #filmModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title fw-bold" id="modal-basic-title">{{selectedFilm.title}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+        <h5 class="h5 fw-bold">Géneros</h5>
+		<ul class="list-group">
+            <li class="list-group-item" *ngFor="let genre of selectedFilm.genres">{{genre.name}}</li>
+        </ul>
+        <h5 class="h5 fw-bold mt-1">Overview</h5>
+        <p class="modal-text">{{selectedFilm.overview}}</p>
+        <h5 class="h5 fw-bold mt-1">Release Date</h5>
+        <p class="modal-text">{{selectedFilm.release_date}}</p>
+        <h5 class="h5 fw-bold mt-1">Revenue</h5>
+        <p class="modal-text">{{selectedFilm.revenue}}$</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">Close</button>
+	</div>
+</ng-template>
+
