@@ -12,4 +12,6 @@ export class MovieItemComponent {
   setUrlImage():string {
     return `https://image.tmdb.org/t/p/w220_and_h330_face${this.movie.poster_path}`;
   }
+
+  
 }

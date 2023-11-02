@@ -5,9 +5,8 @@ import { PageDetailsComponent } from './ui/page-details/page-details.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: 'movies', component:PageHomeComponent, children:[
-    {path: 'details/:id', component:PageDetailsComponent}
-  ]},
+  {path: 'movies', component:PageHomeComponent},
+  {path: 'details/:id', component:PageDetailsComponent},
   {path: '', pathMatch: 'full', redirectTo:'/movies'},
   {path: '**', component:PageNotFoundComponent}
 ];

@@ -1,1 +1,68 @@
-<p>page-details works!</p>
+<div class="w-75 row p-4 ">
+    <div class="col-4">
+        <img [src]="setUrlImage()" class="img-fluid rounded float-end pt-3"/>
+    </div>
+    <div class="col-8 row">
+        <h1 class="h1 text-white fw-bold display-3">{{selectedMovie.title}} </h1>
+        <p class="text-secondary fs-4">{{isForAdult()}} | <span *ngFor="let genre of selectedMovie.genres">{{genre.name}},</span> | {{selectedMovie.release_date}} | {{selectedMovie.runtime}}min</p>
+        <hr class="text-white">
+        <div class="col-9">
+            <p class="text-white fs-2 fst-italic">{{selectedMovie.tagline}}</p>
+            <div ngbAccordion class="w-100">
+                <div ngbAccordionItem [collapsed]="false">
+                    <h2 ngbAccordionHeader>
+                        <button ngbAccordionButton>Overview</button>
+                    </h2>
+                    <div ngbAccordionCollapse>
+                        <div ngbAccordionBody>
+                            <ng-template>
+                                {{selectedMovie.overview}}
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h3 class="h3 text-white fw-bold" >Rating</h3>
+            <hr class="text-white">
+            <p class="text-white">⭐{{selectedMovie.vote_average}}</p>
+            <h3 class="h3 text-white fw-bold" >Revenue</h3>
+            <hr class="text-white">
+            <p class="text-white">{{selectedMovie.revenue}} $</p>
+            <h3 class="h3 text-white fw-bold" >Home Page</h3>
+            <hr class="text-white">
+            <a [href]="selectedMovie.homepage" target="_blank">{{selectedMovie.original_title}}</a>
+            <h3 class="h3 text-white fw-bold pt-1" >Budget</h3>
+            <hr class="text-white">
+            <p class="text-white">{{selectedMovie.budget}} $</p>
+
+        </div>
+        <div *ngIf="selectedMovie.belongs_to_collection">
+            <h2 class="h2 text-white fw-bold">{{selectedMovie.belongs_to_collection.name}}</h2>
+            <hr class="text-white">
+            <img [src]="setColletcionUrlImage()" class="img-fluid rounded"/>
+        </div>
+        <div class="row text-white">
+            <div class="col-6">
+                <h3 class="h3">Production Companies</h3>
+                <hr class="text-white">
+                <div class="d-flex">
+                    <div *ngFor="let comp of selectedMovie.production_companies">
+                        <img [src]="setImgUrl(comp)" alt=""  class="w-50 m-1">
+                        <p> {{comp.name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <h3 class="h3">Production Countries</h3>
+                <hr class="text-white">
+                <ul class="list-group ">
+                    <li class="list-group-item" *ngFor="let country of selectedMovie.production_countries">{{country.name}}</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
