@@ -1,0 +1,11 @@
+<h1 class="h1 fw-bold">USERS</h1>
+@for(user of userList; track $index){
+    <div class="card w-75 mt-3">
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}}</h5>
+          <p class="card-text">edad: {{user.age}}años</p>
+          <a href="#" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+      
+}
