@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
 
@@ -21,8 +21,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
-                    image: NetworkImage(
-                        'https://miravosblog.files.wordpress.com/2014/10/path-logo.jpg')),
+                    image: AssetImage('images/logo_path.png')),
                 Text('Beautiful, Private & Sharing',
                     style: TextStyle(color: Colors.white))
               ],
