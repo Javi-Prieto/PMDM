@@ -7,9 +7,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text('Viajes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),),
       body: ListView(
+        
         children: [
+          FlyCard(duracionMinutes: 90, fechaSalida: DateTime.now(), iataL: 'LHR', iataS: 'MAD', llegada: 'Londres', salida: 'Madrid', line: 'Iberia 7448'),
+          FlyCard(duracionMinutes: 120, fechaSalida: DateTime.now(), iataL: 'LHR', iataS: 'SVQ', llegada: 'Londres', salida: 'Sevilla', line: 'Iberia 748'),
+          FlyCard(duracionMinutes: 90, fechaSalida: DateTime.now(), iataL: 'MAD', iataS: 'CS', llegada: 'Madrid', salida: 'Caracas', line: 'Iberia 8448'),
+          FlyCard(duracionMinutes: 90, fechaSalida: DateTime.now(), iataL: 'BLA', iataS: 'ABQ', llegada: 'Barcelona', salida: 'Albuquerque', line: 'Iberia 7448')
         ],
       ),
     );
