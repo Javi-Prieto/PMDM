@@ -9,35 +9,50 @@ class ScoreScreen extends StatefulWidget {
 }
 
 class _ScoreScreenState extends State<ScoreScreen> {
-  
   bool _dark = false;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: _dark?Colors.black : Colors.white,
+    return Scaffold(
+      backgroundColor: _dark ? Colors.black : Colors.white,
       appBar: AppBar(
-        title: const Text("THE GAME", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          "THE GAME",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: _dark ? Colors.white : Colors.black,
+          ),
         ),
+        backgroundColor: _dark ? Colors.black : Colors.white,
       ),
-      body:Center(
-        child:   Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          TeamItem(teamName: 'Local',isBlack: _dark),
-          TeamItem(teamName: 'Visitante', isBlack: _dark,),
+          TeamItem(teamName: 'Local', isBlack: _dark),
+          TeamItem(
+            teamName: 'Visitante',
+            isBlack: _dark,
+          ),
           FloatingActionButton(
             onPressed: () {
               setState(() {
-                _dark? _dark = false: _dark = true;
+                _dark ? _dark = false : _dark = true;
               });
             },
-            child: _dark? const Text("Set Light Mode"):const Text("Set Dark Mode") ,
-            )
-          
+            child: _dark
+                ? Icon(
+                    Icons.sunny,
+                    color: Colors.amber.shade600,
+                  )
+                : const Icon(
+                    Icons.brightness_3,
+                    color: Colors.black,
+                  ),
+          )
         ],
-      )
-      ),
+      )),
     );
   }
 }
