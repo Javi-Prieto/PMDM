@@ -6,9 +6,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text('PokeManiacos'),centerTitle: true,),
-      body: const PokemonCard(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('PokeManiacos'),
+        centerTitle: true,
+      ),
+      body: const PokemonWidget(),
     );
   }
 }

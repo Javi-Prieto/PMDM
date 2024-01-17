@@ -1,55 +1,47 @@
+import 'package:first_http_petition/models/pokemon_response/pokemon_response.dart';
+import 'package:first_http_petition/widget/pokemon_item.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class PokemonCard extends StatelessWidget {
-  const PokemonCard({super.key});
+Future<PokemonResponse> fetchPokemon() async {
+  final response =
+      await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon/mewtwo'));
+  if (response.statusCode == 200) {
+    return PokemonResponse.fromJson(response.body);
+  } else {
+    throw Exception('Failed to load album');
+  }
+}
+
+class PokemonWidget extends StatefulWidget {
+  const PokemonWidget({super.key});
+
+  @override
+  State<PokemonWidget> createState() => PokemonWidgetState();
+}
+
+class PokemonWidgetState extends State<PokemonWidget> {
+  late Future<PokemonResponse> pokemon;
+  @override
+  void initState() {
+    super.initState();
+    pokemon = fetchPokemon();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Card(
-        color: Colors.white,
-        margin: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Bueno, bonito y MUY CARO', style: TextStyle(color: Colors.green),),
-                  Text('No hay ofertas', style: TextStyle(color: Colors.grey),)
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Image(image: NetworkImage('anyimage'),fit: BoxFit.contain, width: 200,)
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('name'),
-                  Text('2-3 puertas ~ Cochazo', style: TextStyle(color: Colors.grey),),
-                  Row(
-                    children: [
-                      Icon( Icons.gamepad_rounded ),
-                      Text( 'Aut.'),
-                      SizedBox(width: 5,),
-                      Icon(Icons.snowing),
-                      Text( 'A/A'),
-                      SizedBox(width: 5,),
-                      Icon( Icons.man),
-                      Text('sites'),
-                      SizedBox(width: 5,),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: FutureBuilder<PokemonResponse>(
+        future: pokemon,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return PokemonCard(pokemon: snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return const CircularProgressIndicator();
+        },
       ),
     );
   }
