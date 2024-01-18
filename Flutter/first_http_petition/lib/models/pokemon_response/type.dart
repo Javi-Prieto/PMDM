@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:first_http_petition/models/pokemon_response/sub_type.dart';
 
-import 'type.dart';
 
 class Type {
   int? slot;
-  Type? type;
+  SubType? type;
 
   Type({this.slot, this.type});
 
@@ -14,7 +14,7 @@ class Type {
         slot: data['slot'] as int?,
         type: data['type'] == null
             ? null
-            : Type.fromMap(data['type'] as Map<String, dynamic>),
+            : SubType.fromMap(data['type'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toMap() => {
