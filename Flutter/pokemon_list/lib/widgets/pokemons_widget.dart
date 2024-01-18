@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokemon_list/models/pokemon_list/pokemon_list.dart';
 import 'package:pokemon_list/screen/home_screen.dart';
+
 Future<PokemonList> fetchPokemon() async {
   final response =
       await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon/'));
@@ -14,14 +14,14 @@ Future<PokemonList> fetchPokemon() async {
   }
 }
 
-class PokemonWidget extends StatefulWidget {
-  const PokemonWidget({super.key});
+class PokemonListWidget extends StatefulWidget {
+  const PokemonListWidget({super.key});
 
   @override
-  State<PokemonWidget> createState() => PokemonWidgetState();
+  State<PokemonListWidget> createState() => PokemonListWidgetState();
 }
 
-class PokemonWidgetState extends State<PokemonWidget> {
+class PokemonListWidgetState extends State<PokemonListWidget> {
   late Future<PokemonList> pokemonList;
   @override
   void initState() {

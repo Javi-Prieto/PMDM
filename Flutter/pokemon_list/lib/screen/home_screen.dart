@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_list/models/pokemon_list/pokemon_list.dart';
 import 'package:pokemon_list/models/pokemon_list/result.dart';
+import 'package:pokemon_list/widgets/pokemon_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,13 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: Skeletonizer(
+        enabled: widget.pokemonList.isEmpty,
         child: ListView.builder(
-          itemCount: widget.pokemonList.length,
-          itemBuilder: (context, index){
-            return const Card(
-              
-            );
-          }),
+            itemCount: widget.pokemonList.length,
+            itemBuilder: (context, index) {
+              return PokemonWidget(
+                  pokemonName: widget.pokemonList[index].name!);
+            }),
       ),
     );
   }
