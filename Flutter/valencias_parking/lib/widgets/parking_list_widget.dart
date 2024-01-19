@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:valencias_parking/models/parking_list/parking_list.dart';
+import 'package:valencias_parking/widgets/parking_item.dart';
 
 Future<ParkingListResponse> fetchParking() async {
   final response =
@@ -30,6 +32,11 @@ class _ParkingListState extends State<ParkingList> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Skeletonizer(child: ListView.builder(
+      itemBuilder: (context, index){
+        return ParkingItem();
+      }
+      )
+      );
   }
 }
