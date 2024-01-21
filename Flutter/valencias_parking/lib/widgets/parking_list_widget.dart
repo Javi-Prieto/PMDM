@@ -5,8 +5,8 @@ import 'package:valencias_parking/models/parking_list/parking_list.dart';
 import 'package:valencias_parking/widgets/parking_item.dart';
 
 Future<ParkingListResponse> fetchParking() async {
-  final response =
-      await http.get(Uri.parse('https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/parkings/records?limit=20'));
+  final response = await http.get(Uri.parse(
+      'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/parkings/records?limit=20'));
   if (response.statusCode == 200) {
     final toReturn = ParkingListResponse.fromJson(response.body);
     return toReturn;
@@ -32,11 +32,25 @@ class _ParkingListState extends State<ParkingList> {
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(child: ListView.builder(
-      itemBuilder: (context, index){
-        return ParkingItem();
-      }
-      )
-      );
+    return Container(
+      padding: const EdgeInsets.all(10),
+      child: FutureBuilder<ParkingListResponse>(
+        future: parkingResponse,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Skeletonizer(
+                enabled: false,
+                child: ListView.builder(itemBuilder: (context, index) {
+                  return ParkingItem(
+                    parking: snapshot.data!.results![index],
+                  );
+                }));
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
+    );
   }
 }

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class Geometry {
-  List<double>? coordinates;
+  List<dynamic>? coordinates;
   String? type;
 
   Geometry({this.coordinates, this.type});
 
   factory Geometry.fromMap(Map<String, dynamic> data) => Geometry(
-        coordinates: data['coordinates'] as List<double>?,
+        coordinates: data['coordinates'] as List<dynamic>?,
         type: data['type'] as String?,
       );
 
