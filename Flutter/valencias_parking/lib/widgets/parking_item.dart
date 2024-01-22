@@ -82,7 +82,7 @@ class ParkingItem extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          const Icon(Icons.date_range),
+                          const Icon(Icons.date_range, color: Colors.white,),
                           Text(
                               parking.ultimaMod.toString() == 'null'
                                   ? 'Sin datos'
