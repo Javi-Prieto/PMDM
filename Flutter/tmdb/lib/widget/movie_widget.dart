@@ -4,7 +4,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:tmdb/models/popular_movie_response/popular_movie_response.dart';
 import 'package:tmdb/widget/movie_item.dart';
 
-Future<PopularMovieResponse> fetchPeople() async {
+Future<PopularMovieResponse> fetchMovie() async {
   final response = await http.get(Uri.parse(
       'https://api.themoviedb.org/3/movie/popular?api_key=fab7d493325528d418b4366ba529f773'));
   if (response.statusCode == 200) {
@@ -28,7 +28,7 @@ class _MovieWidgetState extends State<MovieWidget> {
   @override
   void initState() {
     super.initState();
-    movieResponse = fetchPeople();
+    movieResponse = fetchMovie();
   }
 
   @override

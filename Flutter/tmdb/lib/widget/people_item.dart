@@ -100,8 +100,14 @@ class PeopleItem extends StatelessWidget {
                   ],
                 )),
           ),
-          onTap: (){
-            Navigator.push(context, CupertinoPageRoute(builder: (context) =>  PeopleDetailScreen(name: person.name!, id: person.id!,)));
+          onTap: () {
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => PeopleDetailScreen(
+                          name: person.name!,
+                          id: person.id!,
+                        )));
           },
         ),
       ),

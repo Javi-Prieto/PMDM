@@ -100,8 +100,14 @@ class MovieItem extends StatelessWidget {
                   ],
                 )),
           ),
-          onTap: (){
-            Navigator.push(context, CupertinoPageRoute(builder: (context) =>  MovieDetailScreen(name: movie.title!, id: movie.id!,)));
+          onTap: () {
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => MovieDetailScreen(
+                          name: movie.title!,
+                          id: movie.id!,
+                        )));
           },
         ),
       ),
