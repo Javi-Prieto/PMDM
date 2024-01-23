@@ -48,3 +48,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+class BounceNavigationBar extends StatefulWidget {
+  const BounceNavigationBar({super.key});
+
+  @override
+  State<BounceNavigationBar> createState() => BounceNavigationBarState();
+}
+
+class BounceNavigationBarState extends State<BounceNavigationBar> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
