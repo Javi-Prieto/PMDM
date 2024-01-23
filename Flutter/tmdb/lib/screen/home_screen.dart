@@ -10,13 +10,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   static const List<Widget> _widgetOptions = <Widget>[
     PeopleScreen(),
     MovieScreen(),
@@ -31,35 +31,91 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Actor',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.movie),
-            label: 'Movies',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple,
-        onTap: _onItemTapped,
-      ),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Actor',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.movie),
+              label: 'Movies',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.deepPurple,
+          onTap: _onItemTapped,
+        ),
     );
   }
 }
 
-
+/*
 class BounceNavigationBar extends StatefulWidget {
-  const BounceNavigationBar({super.key});
 
   @override
   State<BounceNavigationBar> createState() => BounceNavigationBarState();
 }
 
-class BounceNavigationBarState extends State<BounceNavigationBar> {
+class BounceNavigationBarState extends State<BounceNavigationBar> with SingleTickerProviderStateMixin{
+  
+ 
+  late AnimationController _controller;
+  late Animation _animTabBarIn;
+  late Animation _animTabBarOut;
+  
+  @override
+  void initState(){
+    super.initState();
+    _controller = AnimationController(vsync: this,
+    duration: const Duration(
+      milliseconds: 1200,
+    ));
+    _animTabBarIn = CurveTween(curve: const Interval(0.1, 0.6, curve: Curves.decelerate)).animate(_controller);
+    _animTabBarOut = CurveTween(curve: const Interval(0.6, 1.0, curve: Curves.decelerate)).animate(_controller);
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, snapshot){
+        return BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Actor',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.movie),
+              label: 'Movies',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.deepPurple,
+          onTap: _onItemTapped,
+        );
+      },
+      child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Actor',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.movie),
+              label: 'Movies',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.deepPurple,
+          onTap: _onItemTapped,
+        ),
+    );
   }
-}
+}*/
