@@ -5,7 +5,8 @@ import 'package:tmdb/models/popular_people_response/popular_people_response.dart
 import 'package:tmdb/widget/people_item.dart';
 
 Future<PopularPeopleResponse> fetchPeople() async {
-  final response = await http.get(Uri.parse('https://api.themoviedb.org/3/person/popular?api_key=fab7d493325528d418b4366ba529f773'));
+  final response = await http.get(Uri.parse(
+      'https://api.themoviedb.org/3/person/popular?api_key=fab7d493325528d418b4366ba529f773'));
   if (response.statusCode == 200) {
     final toReturn = PopularPeopleResponse.fromJson(response.body);
     return toReturn;
@@ -41,12 +42,12 @@ class _PeopleWidgetState extends State<PeopleWidget> {
             return Skeletonizer(
                 enabled: false,
                 child: ListView.builder(
-                  itemCount: snapshot.data!.results!.length,
-                                    itemBuilder: (context, index) {
-                  return PeopleItem(
-                    person: snapshot.data!.results![index],
-                  );
-                }));
+                    itemCount: snapshot.data!.results!.length,
+                    itemBuilder: (context, index) {
+                      return PeopleItem(
+                        person: snapshot.data!.results![index],
+                      );
+                    }));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
