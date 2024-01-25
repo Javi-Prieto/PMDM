@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tmdb/models/movie_details_response/movie_details_response.dart';
 
 
@@ -33,15 +34,17 @@ class MovieDetailsItem extends StatelessWidget {
                     for(var genre in movie.genres! ) Text('| ${genre.name!} |')
                   ],
                 ),
-                Row(
-                  children: [
-                    const Icon(Icons.star),
-                    Text('${movie.voteAverage!}')
-                  ],
-                ),
+                CircularPercentIndicator(
+                  radius: 40,
+                  lineWidth: 3,
+                  percent: movie.voteAverage!/10,
+                  center: Text('${(movie.voteAverage!).roundToDouble()}⭐'),
+                  progressColor: Colors.deepPurple,
+                  )
               ],
             ),
-            Text(movie.overview!)
+            Text(movie.overview!),
+            
           ],
         ),
       ),

@@ -41,13 +41,20 @@ class _MovieWidgetState extends State<MovieWidget> {
           if (snapshot.hasData) {
             return Skeletonizer(
                 enabled: false,
-                child: ListView.builder(
-                    itemCount: snapshot.data!.results!.length,
-                    itemBuilder: (context, index) {
-                      return MovieItem(
-                        movie: snapshot.data!.results![index],
-                      );
-                    }));
+                child: GridView.builder(
+                  itemCount: snapshot.data!.results!.length,
+                  itemBuilder: (context, index) {
+                    return MovieItem(
+                      movie: snapshot.data!.results![index],
+                    );
+                  },
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      mainAxisExtent: 300,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 100),
+                ));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

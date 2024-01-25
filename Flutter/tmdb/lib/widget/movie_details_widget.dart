@@ -40,8 +40,7 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Skeletonizer(
-                enabled: false,
-                child: MovieDetailsItem(movie: snapshot.data!));
+                enabled: false, child: MovieDetailsItem(movie: snapshot.data!));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

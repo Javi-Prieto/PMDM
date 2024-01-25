@@ -50,7 +50,11 @@ class PersonDetailItem extends StatelessWidget {
 }
 
 class ShakeAnimation extends StatelessWidget {
-  const ShakeAnimation({super.key, required this.child, required this.duration, this.offset =140.0});
+  const ShakeAnimation(
+      {super.key,
+      required this.child,
+      required this.duration,
+      this.offset = 140.0});
   final Widget child;
   final Duration duration;
   final double offset;
@@ -58,16 +62,15 @@ class ShakeAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 1.0, end: 0.0),
-      duration: duration,
-      curve: Curves.bounceOut,
-      builder: ((context, value, child){
-        return Transform.translate(
-          offset: Offset(value*offset, 0.0)
-          ,child: child,
-        );
-      }
-      ),
-    child: child);
+        tween: Tween(begin: 1.0, end: 0.0),
+        duration: duration,
+        curve: Curves.bounceOut,
+        builder: ((context, value, child) {
+          return Transform.translate(
+            offset: Offset(value * offset, 0.0),
+            child: child,
+          );
+        }),
+        child: child);
   }
 }

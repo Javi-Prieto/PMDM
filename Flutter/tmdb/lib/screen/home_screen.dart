@@ -10,13 +10,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   static const List<Widget> _widgetOptions = <Widget>[
     PeopleScreen(),
     MovieScreen(),
@@ -31,20 +31,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Actor',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.movie),
-              label: 'Movies',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.deepPurple,
-          onTap: _onItemTapped,
-        ),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Actor',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.movie),
+            label: 'Movies',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.deepPurple,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

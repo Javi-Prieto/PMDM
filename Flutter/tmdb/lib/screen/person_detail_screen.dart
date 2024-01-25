@@ -12,7 +12,9 @@ class PeopleDetailScreen extends StatelessWidget {
         title: Text(name),
         centerTitle: true,
         leading: InkWell(
-          onTap: (){Navigator.pop(context);},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: const Icon(Icons.arrow_back),
         ),
       ),
