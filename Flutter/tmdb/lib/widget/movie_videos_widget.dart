@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:tmdb/models/movie_videos_response/movie_videos_response.dart';
-import 'package:tmdb/screen/movie_detail_screen.dart';
+import 'package:tmdb/widget/movie_videos_item.dart';
 
 Future<MovieVideosResponse> fetchTrailers(int id) async {
   final response = await http.get(Uri.parse(
@@ -40,23 +39,27 @@ class _MovieVideosWidgetState extends State<MovieVideosWidget> {
         future: movieDetailResponse,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Skeletonizer(
-                enabled: false,
-                child: ListView.builder(
+            if (snapshot.data!.results!.isEmpty) {
+              return const Text('No tenemos Trailers');
+            }
+            return SizedBox(
+                width: 200,
+                height: 400,
+                child: GridView.builder(
                   itemCount: snapshot.data!.results!.length,
                   scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                    mainAxisSpacing: 2.0,
+                    crossAxisSpacing: 2.0,
+                    mainAxisExtent: 400,
+                  ),
                   itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, 
-                          CupertinoPageRoute(builder: (context) => MovieDetailScreen(name: 'hola', id: widget.id))
-                        );
-                      },
-                      child: Text('https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api#:~:text=In%20YouTube%20Data%20API%20v3,its%20width%2C%20height%20and%20URL.'),
-                    );
-                  }
-          )
-          );
+                    return MovieVideosItem(
+                        videoKey: snapshot.data!.results![index].key!);
+                  },
+                ));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
