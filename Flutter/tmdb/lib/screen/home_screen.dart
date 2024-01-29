@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb/screen/movie_screen.dart';
 import 'package:tmdb/screen/people_screen.dart';
+import 'package:tmdb/screen/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     PeopleScreen(),
     MovieScreen(),
+    ProfileScreen()
   ];
 
   @override
@@ -39,6 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
             label: 'Movies',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_3_rounded),
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
