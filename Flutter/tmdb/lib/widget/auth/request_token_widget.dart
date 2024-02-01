@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tmdb/models/request_token_response.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-Future<RequestTokenResponse> fetchMovieDetails() async {
+setRequestToken(String requestToken) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('request_token', requestToken);
+}
+
+Future<RequestTokenResponse> fetchRequestToken() async {
   final response = await http.get(Uri.parse(
       'https://api.themoviedb.org/3/authentication/token/new?api_key=fab7d493325528d418b4366ba529f773'));
   if (response.statusCode == 200) {
@@ -21,38 +27,42 @@ class RequestTokenWidget extends StatefulWidget {
 }
 
 class _RequestTokenWidgetState extends State<RequestTokenWidget> {
-  late Future<RequestTokenResponse> movieDetailResponse;
+  late Future<RequestTokenResponse> requestTokenResponse;
 
   @override
   void initState() {
     super.initState();
-    movieDetailResponse = fetchMovieDetails();
+    requestTokenResponse = fetchRequestToken();
   }
 
-  _launchUrl(request_token) async {
-  if (!await launchUrl(Uri.parse('https://www.themoviedb.org/authenticate/${request_token}?http://localhost:65424/'))) {
-    throw Exception('Could not launch ${Uri.parse('https://www.themoviedb.org/authenticate/${request_token}?http://localhost:65424/')}');
-  }
+  _launchUrl(requestToken) async {
+    if (!await launchUrl(Uri.parse(
+        'https://www.themoviedb.org/authenticate/$requestToken?redirect_to=http://localhost:58734/'))) {
+      throw Exception(
+          'Could not launch ${Uri.parse('https://www.themoviedb.org/authenticate/$requestToken?redirect_to=http://localhost:65424/')}');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Material(
-          child: FutureBuilder<RequestTokenResponse>(
-            future: movieDetailResponse,
-            builder: (context, snapshot) { 
-              if(snapshot.hasData){
-                return ElevatedButton(
-                  onPressed: _launchUrl(snapshot.data!.requestToken!),
-                  child: const Text('Show Flutter homepage'),
-                );
-              }else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-                return const CircularProgressIndicator();
-            },
-          ),
+      home: Material(
+        child: FutureBuilder<RequestTokenResponse>(
+          future: requestTokenResponse,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              setRequestToken(snapshot.data!.requestToken!);
+              return ElevatedButton(
+                onPressed: _launchUrl(snapshot.data!.requestToken!),
+                child: const Text('Show Flutter homepage'),
+              );
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+            return const CircularProgressIndicator();
+          },
         ),
-      );
-}}
+      ),
+    );
+  }
+}
