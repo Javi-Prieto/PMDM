@@ -5,11 +5,10 @@ import 'package:google_maps_fuente_valencia/models/valencias_font_response/geo_p
 class PlaceMarkerItem extends StatefulWidget {
   const PlaceMarkerItem({super.key, required this.markersPointer});
   final List<GeoPoint2d> markersPointer;
-  
+
   @override
   State<PlaceMarkerItem> createState() => PlaceMarkerItemState();
 }
-
 
 typedef MarkerUpdateAction = Marker Function(Marker marker);
 
@@ -20,23 +19,26 @@ class PlaceMarkerItemState extends State<PlaceMarkerItem> {
   @override
   void initState() {
     super.initState();
+    addMarkers();
+  }
+
+  addMarkers() {
     int i = 0;
     for (var geoPoint in widget.markersPointer) {
-      markersNew.addAll({MarkerId('$i'): Marker(markerId: MarkerId('$i'), position: LatLng(geoPoint.lat!, geoPoint.lon!))});
+      markersNew[MarkerId('$i')] = Marker(
+          markerId: MarkerId('$i'),
+          position: LatLng(geoPoint.lat!, geoPoint.lon!));
       i++;
     }
-
     setState(() {
       markers.addAll(markersNew);
     });
   }
-  
+
   GoogleMapController? controller;
-  
-  
+
   MarkerId? selectedMarker;
   LatLng? markerPosition;
-  
 
   void _onMapCreated(GoogleMapController controller) {
     this.controller = controller;
@@ -49,10 +51,6 @@ class PlaceMarkerItemState extends State<PlaceMarkerItem> {
 
   @override
   Widget build(BuildContext context) {
-    List<LatLng> listLatLong = List.empty();
-    for (var element in widget.markersPointer) {
-        listLatLong.add(LatLng(element.lat!, element.lon!));
-     }
     return Stack(children: <Widget>[
       Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

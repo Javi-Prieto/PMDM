@@ -18,14 +18,14 @@ final class _$FontService extends FontService {
   final Type definitionType = FontService;
 
   @override
-  Future<Response<ValenciasFontResponse>> fetchValenciasFontResponse() {
-    final Uri $url = Uri.parse(
-        'fonts-daigua-publica-fuentes-de-agua-publica/records?limit=20');
+  Future<Response<dynamic>> fetchValenciasFontResponse() {
+    final Uri $url =
+        Uri.parse('fonts-daigua-publica-fuentes-de-agua-publica/records');
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
     );
-    return client.send<ValenciasFontResponse, ValenciasFontResponse>($request);
+    return client.send<dynamic, dynamic>($request);
   }
 }

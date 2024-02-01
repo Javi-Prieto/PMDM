@@ -17,37 +17,44 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Response response;
   List<Result> fonts = [];
+  List<GeoPoint2d> list = [];
 
   @override
-  initState() {
+  void initState() {
     super.initState();
-    Provider.of<FontService>(context, listen: false).fetchValenciasFontResponse().then((value) {
+    Provider.of<FontService>(context, listen: false)
+        .fetchValenciasFontResponse()
+        .then((value) {
       setState(() {
-        response = value;  
+        response = value;
         fonts = ValenciasFontResponse.fromJson(response.body!).results!;
+        for (var element in fonts) {
+          list.add(element.geoPoint2d!);
+        }
       });
+    }).onError((error, stackTrace) {
+      print('mierror: ' + error.toString());
+      print('mytrack: ' + stackTrace.toString());
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    List<GeoPoint2d> list = List.empty();
-    fonts.forEach((element) {
-      list.add(element.geoPoint2d!);
-    },);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Salesianos Location'),
+        title: const Text('Valencias Fonts'),
         centerTitle: true,
       ),
       body: ListView(
         shrinkWrap: false,
         children: [
           const Text(
-            'Where are Salesianos Triana',
+            'Where Are the Main Fonts in Valencia?',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
           ),
-          PlaceMarkerItem(markersPointer: list)
+          list.isEmpty
+              ? const CircularProgressIndicator()
+              : PlaceMarkerItem(markersPointer: list)
         ],
       ),
     );
